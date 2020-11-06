@@ -31,6 +31,7 @@ class ListingsController extends Controller
     {
         //テンプレート「listing/new.blade.php」を表示する
         return view('listing/new');
+        //aaaaa
     }
     
 }
