@@ -11,30 +11,32 @@
 |
 */
 
+// //===ここから削除（トップページをリスト一覧画面にするため。未ログイン時はログイン画面に遷移します）===
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+// //===ここまで削除===
 
+//===ここから追加===
 //リスト一覧画面
-Route::get('/', 'ListingsController@index');
+Route::get('/','ListingsController@index');
 
 //リスト新規画面
-Route::get('/new', 'ListingsController@new')->name('new');
+Route::get('/newlist', 'ListingsController@newlist')->name('newlist');
 
 //リスト新規処理
-Route::post('/listings', 'ListingsController@store');
+Route::post('/listings','ListingsController@store');
 
 //リスト更新画面
-Route::get('/listings_edit/{listing_id}', 'ListingsController@edit');
+Route::get('/listingsedit/{listing_id}', 'ListingsController@edit');
 
 //リスト更新処理
-Route::post('/listings/edit', 'ListingsController@update');
+Route::post('/listing/edit','ListingsController@update');
 
 //リスト削除処理
-Route::get('/listings_delete/{listing_id}', 'ListingsController@delete' );
+Route::get('/listingsdelete/{listing_id}', 'ListingsController@destroy');
+//===ここまで追加===
 
-//ログイン認証
 Auth::routes();
 
-//ホーム画面
 Route::get('/home', 'HomeController@index')->name('home');
