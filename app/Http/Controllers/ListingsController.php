@@ -47,7 +47,7 @@ class ListingsController extends Controller
         {
             return redirect()->back()->withErrors($validator->errors())->withInput();
         }
-        
+
         //Listingモデル作成
         $listings = new Listing;
         $listings->title = $request->list_name;
@@ -59,12 +59,12 @@ class ListingsController extends Controller
         return redirect('/');
     }
 
-    // public function edit($listing_id)
-    // {
-    //     $listing = Listing::find($listing_id);
-    //      // テンプレート「listing/edit.blade.php」を表示します。
-    //     return view('listing/edit', ['listing' => $listing]);
-    // }
+    public function edit($listing_id)
+    {
+        $listing = Listing::find($listing_id);
+        //テンプレート「listing/edit.blade.php」を表示する
+        return view('listing/edit', ['listing' => $listing]);
+    }
 
     // public function update(Request $request)
     // {

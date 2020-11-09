@@ -24,8 +24,8 @@ Route::get('/newlist', 'ListingsController@newlist')->name('newlist');
 //リスト新規処理
 Route::post('/listings','ListingsController@store');
 
-// //リスト更新画面
-// Route::get('/listingsedit/{listing_id}', 'ListingsController@edit');
+//リスト更新画面
+Route::get('/listingsedit/{listing_id}', 'ListingsController@edit');
 
 // //リスト更新処理
 // Route::post('/listing/edit','ListingsController@update');
