@@ -51,3 +51,6 @@ Route::get('listing/{listing_id}/card/{card_id}/edit', 'CardsController@edit');
 
 //カード更新処理
 Route::post('/card/edit', 'CardsController@update');
+
+//カード削除処理
+Route::get('listing/{listing_id}/card/{card_id}/delete', 'CardsController@destroy');

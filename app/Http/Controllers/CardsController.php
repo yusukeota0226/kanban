@@ -84,4 +84,13 @@ class CardsController extends Controller
         
         return redirect('/');
     }
+    
+    public function destroy($listing_id, $card_id)
+    {
+        $card = Card::find($card_id);
+        $card->delete();
+        
+        //「/」ルートにリダイレクト
+        return redirect('/');
+    }
 }
