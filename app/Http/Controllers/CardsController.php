@@ -45,4 +45,23 @@ class CardsController extends Controller
         //ルートにリダイレクト
         return redirect('/');
     }
+    
+    public function show($listing_id, $card_id)
+    {
+        $listing = Listing::find($listing_id);
+        $card = Card::find($card_id);
+        
+        //テンプレート「card/show.blade.php」を表示する
+        return view('card/show', ['listing' => $listing, 'card'=> $card]);
+    }
+    
+    public function edit($listing_id, $card_id)
+    {
+        $listings = Listing::where('user_id', Auth::user()->id)->get();
+        $listing = Listing::find($listing_id);
+        $card = Card::find($card_id);
+        
+        //テンプレート「card/edit.blade.php」を表示する
+        return view('card/edit', ['listings' => $listings, 'listing' => $listing, 'card' => $card]);
+    }
 }
