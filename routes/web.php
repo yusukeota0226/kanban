@@ -48,3 +48,6 @@ Route::get('listing/{listing_id}/card/{card_id}', 'CardsController@show');
 
 //カード編集画面
 Route::get('listing/{listing_id}/card/{card_id}/edit', 'CardsController@edit');
+
+//カード更新処理
+Route::post('/card/edit', 'CardsController@update');

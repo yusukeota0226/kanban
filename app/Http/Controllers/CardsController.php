@@ -64,4 +64,24 @@ class CardsController extends Controller
         //テンプレート「card/edit.blade.php」を表示する
         return view('card/edit', ['listings' => $listings, 'listing' => $listing, 'card' => $card]);
     }
+    
+    public function update(Request $request)
+    {
+        //バリデーションチェック
+        $validator = Validator::make($request->all(), ['card_title' => 'required|max:255', 'card_memo' => 'required|max:255',]);
+        
+        //バリデーションチェックがエラーの場合
+        if($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator->errors())->withInput();
+        }
+        
+        $card = Card::find($request->id);
+        $card->title = $request->card_title;
+        $card->memo = $request->card_memo;
+        $card->listing_id = $request->listing_id;
+        $card->save();
+        
+        return redirect('/');
+    }
 }
